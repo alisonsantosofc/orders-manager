@@ -1,13 +1,11 @@
-package com.application.orders_manager;
+package com.application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OrdersManagerApplicationTests {
-
+class AppTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
