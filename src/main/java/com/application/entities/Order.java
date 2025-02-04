@@ -2,6 +2,8 @@ package com.application.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.application.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +32,9 @@ public class Order implements Serializable {
   @ManyToOne
   @JoinColumn(name = "userId")
   private User user;
+
+  @OneToMany(mappedBy = "id.order")
+  private Set<OrderItem> items = new HashSet<>();
 
   public Order() {}
 
@@ -67,6 +73,10 @@ public class Order implements Serializable {
   }
   public void setUser(User user) {
     this.user = user;
+  }
+
+  public Set<OrderItem> getItems() {
+    return items;
   }
 
   @Override
